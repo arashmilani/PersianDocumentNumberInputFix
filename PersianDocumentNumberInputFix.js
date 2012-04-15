@@ -1,34 +1,42 @@
 var PersianDocumentNumberInputFix = {
     Apply: function (TargetInputElement) {
-        $(document).ready(function () {
+        $(TargetInputElement).css("direction", "ltr").css("text-align", "left");
 
-            $(TargetInputElement).css("direction", "ltr").css("text-align", "left");
+        $(TargetInputElement).keydown(function (Event) {
+            var InputCurrentText = $(this).val();
+            switch (Event.which) {
+                case 8:
+                    if (InputCurrentText.length === 0) {
+                        return true;
+                    }
 
-            $(TargetInputElement).keydown(function (Event) {
-                var InputCurrentText = $(this).val();
-                switch (Event.which) {
-                    case 8:
-                        var LastInputChar = InputCurrentText[InputCurrentText.length - 1];
-                        if (LastInputChar > -1 & LastInputChar < 10) {
-                            $(this).val(InputCurrentText.substr(0, InputCurrentText.length - 2));
-                        }
-                        else {
-                            $(this).val(InputCurrentText.substr(0, InputCurrentText.length - 1));
-                        }
+                    var LastInputCharCode = InputCurrentText[InputCurrentText.length - 1].charCodeAt(0);
+                    if (LastInputCharCode > 1775 && LastInputCharCode < 1786) {
+                        $(this).val(InputCurrentText.substr(0, InputCurrentText.length - 2));
+                    }
+                    else {
+                        $(this).val(InputCurrentText.substr(0, InputCurrentText.length - 1));
+                    }
+                    return false;
+
+                default:
+                    if (Event.which > 47 && Event.which < 58) {
+                        //Normal latin numbers
+                        $(this).val(InputCurrentText + String.fromCharCode(8206) + String.fromCharCode(Event.which + 1728));
                         return false;
-
-                    default:
-                        if (Event.which > 47 & Event.which < 58) {
-                            $(this).val(InputCurrentText + String.fromCharCode(8206) + String.fromCharCode(Event.which));
-                            return false;
-                        }
-                        else if (Event.which > 95 & Event.which < 106) {
-                            $(this).val(InputCurrentText + String.fromCharCode(8206) + String.fromCharCode(Event.which - 48));
-                            return false;
-                        }
-                        break;
-                }
-            });
+                    }
+                    else if (Event.which > 95 && Event.which < 106) {
+                        //Numpad numbers
+                        $(this).val(InputCurrentText + String.fromCharCode(8206) + String.fromCharCode(Event.which + 1680));
+                        return false;
+                    }
+                    else if (Event.which > 1631 && Event.which < 1642) {
+                        //Arabic numbers
+                        $(this).val(InputCurrentText + String.fromCharCode(8206) + String.fromCharCode(Event.which + 144));
+                        return false;
+                    }
+                    break;
+            }
         });
     }
 };

@@ -1,0 +1,19 @@
+"Persian Document Number Input Fix" is a jquery plug-in to help Persian web application developers to get an expected behavior  while entering an alphanumeric value (mostly a official document number) in a text input reading from left to right (as all numbers are read).
+this is an example of incorrect rendering of a document number if you start typing it from left to right: 123abc456 you will get this in the input: “”
+
+HOW TO USE:
+
+include jquery and the PersianDocumentNumberInputFix.js files in your html document as:
+
+<head>
+    <script src="jquery.min.js" type="text/javascript"></script>
+    <script src="PersianDocumentNumberInputFix.js" type="text/javascript"></script>
+</head>
+
+Then select your input using jquery and run the ” ApplyPersianDocumentNumberInputFix” function:
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#PersianDocumentNumberFixedInput").ApplyPersianDocumentNumberInputFix();
+	});
+</script>

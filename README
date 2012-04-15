@@ -1,19 +1,29 @@
-"Persian Document Number Input Fix" is a jquery plug-in to help Persian web application developers to get an expected behavior  while entering an alphanumeric value (mostly a official document number) in a text input reading from left to right (as all numbers are read).
-this is an example of incorrect rendering of a document number if you start typing it from left to right: 123abc456 you will get this in the input: ��
+﻿Persian Document Number Input Fix
+=====================
+"Persian Document Number Input Fix" is a Jquery plug-in to help Persian web application developers to get an expected behavior  while entering an alphanumeric value (mostly a official document number) in a text input reading from left to right (as all numbers are read).
+This is an example of incorrect rendering of a document number if you start typing it from left to right: "123‎الف‎456" you will get "123الف456" or "الف123456" in the input depending on your browser or Operating System.
 
-HOW TO USE:
+Requirements
+------------
+Jquery javascript library
 
-include jquery and the PersianDocumentNumberInputFix.js files in your html document as:
+Usage
+-----
+include Jquery and the PersianDocumentNumberInputFix.js files in your html document as:
 
-<head>
-    <script src="jquery.min.js" type="text/javascript"></script>
-    <script src="PersianDocumentNumberInputFix.js" type="text/javascript"></script>
-</head>
+    <head>
+        <script src="jquery.min.js" type="text/javascript"></script>
+        <script src="PersianDocumentNumberInputFix.js" type="text/javascript"></script>
+    </head>
 
-Then select your input using jquery and run the � ApplyPersianDocumentNumberInputFix� function:
+Then select your input using jquery and run the "ApplyPersianDocumentNumberInputFix" function:
 
-<script type="text/javascript">
-	$(document).ready(function () {
-		$("#PersianDocumentNumberFixedInput").ApplyPersianDocumentNumberInputFix();
-	});
-</script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#PersianDocumentNumberFixedInput").ApplyPersianDocumentNumberInputFix();
+        });
+    </script>
+
+Known issues
+-----
+* We are aware about the additional Left To Right Mark (LTM) charecter before any number that is entered in the text input; Indeed this is trick that the fix use to render the input as expected. but if we store input value in the database and search it via the same fixed input, then we should have no problem.

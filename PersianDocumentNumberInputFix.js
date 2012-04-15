@@ -1,3 +1,14 @@
+/**
+ PersianDocumentNumberInputFix v0.9 is released under the MIT License <http://www.opensource.org/licenses/mit-license.php> by narmand.com 
+ Lastest version can be found at https://github.com/arashmilani/PersianDocumentNumberInputFix
+ 
+ Contributors: 	Tahereh Pourkhalil <taherehpourkhalil.m@gmail.com>
+				Arash Milani <me@arashmilani.com>
+				Farzam Khojasteh <fkniya@gmail.com>
+				
+ - Jquery library is required.
+*/
+
 var PersianDocumentNumberInputFix = {
     Apply: function (TargetInputElement) {
         $(TargetInputElement).css("direction", "ltr").css("text-align", "left");

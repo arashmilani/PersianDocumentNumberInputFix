@@ -28,3 +28,8 @@ Then select your input using jquery and run the "ApplyPersianDocumentNumberInput
 Known issues
 ------------
 * We are aware about the additional Left To Right Mark character (LTM: 8206 charCode) before any number that is entered in the text input; Indeed this is trick that the fix use to render the input as expected. But if we store input value in the database and search it via the same fixed input, then we should be fine.
+
+
+More Info in persian
+--------------------
+check out this Persian post in Narmand blog: http://www.narmand.com/post?id=27
